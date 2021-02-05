@@ -12,11 +12,31 @@
   font-size: 1.2rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-around;
   height: 20%;
   min-height: 20vh;
 }
 
-.counter__text {
+.counter__count {
   font-weight: 700;
+}
+
+.counter__btn {
+  background-color: coral;
+  border-radius: 0.5rem;
+  width: 10rem;
+  height: 2rem;
+  cursor: pointer;
+  box-shadow: 0 0.5rem rgba(0,0,0,0.5);
+  outline: none;
+}
+
+.counter__btn:hover {
+  background-color: rgb(231, 115, 31);
+}
+
+.counter__btn:active {
+  box-shadow: 0 0.2rem rgba(0,0,0,0.2);
+  transform: translateY(4px);
 }
