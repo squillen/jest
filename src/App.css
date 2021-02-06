@@ -215,6 +215,10 @@
   top: 55%;
 }
 
+.guessed {
+  transform: scale(0.8);
+}
+
 .guessed:before {
   background: rgb(255, 133, 133);
   width: 100%;

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Congrats from "./Congrats";
 
 const errors = {
   1: "You can't guess numbers!",
@@ -12,6 +13,7 @@ export default function Jotto() {
   const [currentGuess, setCurrentGuess] = useState("");
   const [userGuesses, setUserGuesses] = useState({});
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [remainingLetters, setRemainingLetters] = useState(
     secretWord.split("")
   );
@@ -39,12 +41,13 @@ export default function Jotto() {
   useEffect(() => {
     if (remainingLetters.length === 0) {
       // congratulate person
+      setSuccess(true)
       setUserGuesses({});
     }
   }, [remainingLetters])
 
   return (
-    <main className="jotto-component">
+    <main data-test="jotto__component" className="jotto-component">
       <header className="header">
         <h1 className="header__title">Jotto!</h1>
         <div className="header__description">
@@ -96,6 +99,7 @@ export default function Jotto() {
         </section>
       </section>
       {error && <center className="error">{errors[error]}</center>}
+      <Congrats success={success} secretWord={secretWord} />
     </main>
   );
 }
