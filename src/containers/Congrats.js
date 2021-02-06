@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 export default function Congrats({ success, secretWord }) {
   return success ? (
     <div data-test="congrats-component">
@@ -9,4 +10,9 @@ export default function Congrats({ success, secretWord }) {
   ) : (
     <div data-test="congrats-component"></div>
   );
+}
+
+Congrats.propTypes = {
+  success: PropTypes.bool.isRequired,
+  secretWord: PropTypes.string.isRequired,
 }
