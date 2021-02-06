@@ -1,13 +1,46 @@
 .App {
-  font-size: 16px;
-  width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  /* font-family: 'Open Sans'; */
+}
+
+/* MAIN */
+.main {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
+.main__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  font-size: 5rem;
+  padding-top: 4rem;
+  text-align: center;
+}
+
+.main__description {
+  width: 70%;
+  font-size: 2rem;
+  padding: 8rem 0;
+}
+
+.main__links {
+  font-size: 3rem;
+  list-style: none;
+}
+
+.main__links li {
+  margin: 1rem 0;
+}
+
+.main__links a:hover {
+  color: blue
+}
+
+/* COUNTER */
 .counter {
   font-size: 1.2rem;
   display: flex;
@@ -28,7 +61,7 @@
   width: 10rem;
   height: 2rem;
   cursor: pointer;
-  box-shadow: 0 0.5rem rgba(0,0,0,0.5);
+  box-shadow: var(--shadow-dark);
   outline: none;
 }
 
@@ -37,6 +70,207 @@
 }
 
 .counter__btn:active {
-  box-shadow: 0 0.2rem rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-light);
   transform: translateY(4px);
 }
+
+/* JOTTO */
+.jotto-component {
+  color: white;
+  width: 100%;
+  min-height: 100vh;
+  background: rgb(0, 13, 138);
+  background: -moz-linear-gradient(
+    27deg,
+    rgba(0, 13, 138, 1) 12%,
+    rgba(217, 47, 75, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    27deg,
+    rgba(0, 13, 138, 1) 12%,
+    rgba(217, 47, 75, 1) 100%
+  );
+  background: linear-gradient(
+    27deg,
+    rgba(0, 13, 138, 1) 12%,
+    rgba(217, 47, 75, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000d8a",endColorstr="#d92f4b",GradientType=1);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 0;
+  font-size: 2rem;
+}
+
+.header__title {
+  font-size: 8rem;
+}
+
+.header__description {
+  width: 50%;
+  text-align: center;
+}
+
+.input-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-section__input {
+  font-family: inherit;
+  border: none;
+  font-size: 1.6rem;
+  color: black;
+  background-color: var(--color-grey-light-3);
+  width: 50rem;
+  height: 5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  padding: .7rem 2rem;
+  margin-right: -5rem;
+}
+
+.input-section__btn {
+  border: none;
+}
+
+.input-section__icon {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.input-section__icon:active {
+  outline: none;
+}
+
+.results {
+  padding: 4rem 0;
+  font-size: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.results__word {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 30vh;
+}
+
+.results__word-header {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.results__word-letters {
+  display: flex;
+  justify-content: center;
+  font-size: 4rem;
+  padding: 4rem 0;
+}
+
+.guesses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 30vh; */
+}
+
+.guesses__letters {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.letter {
+  font-size: 4rem;
+  margin: 0 0.8rem;
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+
+.letter:hover {
+  transform: scale(1.2);
+}
+
+.letter:before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 0.5rem;
+  top: 55%;
+}
+
+.guessed:before {
+  background: rgb(255, 133, 133);
+  width: 100%;
+  transition: width .5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* BUTTON */
+.btn--default {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #351435;
+  height: 0.5rem;
+  font-size: 2rem;
+  border: 3px solid #351435;
+  border-radius: 10px;
+  padding: 2rem 4rem;
+  position: relative;
+  transition: all 1s;
+  z-index: 2;
+  text-transform: uppercase;
+  overflow: hidden;
+  -webkit-box-shadow: 1px 7px 15px 5px #000000; 
+  box-shadow: 1px 7px 15px 5px #000000;
+}
+
+.btn--default:hover {
+  color: white;
+}
+
+.btn--default:focus {
+  outline: none;
+}
+
+.btn--default:active {
+  transform: translateY(2px);
+  -webkit-box-shadow: 1px 3px 10px 3px #000000; 
+  box-shadow: 1px 3px 10px 3px #000000;
+}
+
+.btn--default:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #351435;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.btn--default:hover:before {
+  transform: translateX(0);
+}
+
+
