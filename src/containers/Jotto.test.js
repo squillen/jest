@@ -1,9 +1,6 @@
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import { shallow } from "enzyme";
 import { findByTestAttr } from '../../test/testUtils.js'
 import Jotto from "./Jotto";
-
-Enzyme.configure({ adapter: new Adapter() });
 
 /**
  * Factory function to create a ShallowWrapper for the App component.
