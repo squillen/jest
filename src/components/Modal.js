@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-export default function Congrats({ children, showModal }) {
+export default function Modal({ children, showModal }) {
   return showModal ? (
     <div data-test="modal" className="modal">
       {children}
@@ -9,7 +9,7 @@ export default function Congrats({ children, showModal }) {
   );
 }
 
-Congrats.propTypes = {
+Modal.propTypes = {
   showModal: PropTypes.bool.isRequired,
   children: PropTypes.node,
 }

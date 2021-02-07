@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import Modal from "./Modal";
+import Modal from "../components/Modal";
 import Guesses from "./Guesses";
 import Button from "../components/Button";
 import { findCommonLetters } from "../helpers/helpers.utils.js";

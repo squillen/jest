@@ -1,5 +1,5 @@
 import { shallow } from "enzyme";
-import Counter from "./Counter";
+import Counter from "../containers/Counter";
 
 /**
  * Factory function to create a ShallowWrapper for the App component.

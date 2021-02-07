@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
-import { findByTestAttr } from "../../test/testUtils.js";
-import Modal from "./Modal.js";
+import { findByTestAttr } from "./testUtils.js";
+import Modal from "../components/Modal";
 
 const defaultProps = {
   showModal: false,

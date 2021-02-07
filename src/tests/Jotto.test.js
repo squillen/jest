@@ -1,10 +1,9 @@
 import { shallow } from "enzyme";
-import { findByTestAttr } from "../../test/testUtils.js";
+import { findByTestAttr } from "./testUtils.js";
 import { findCommonLetters } from "../helpers/helpers.utils.js";
-import Jotto from "./Jotto";
+import Jotto from "../containers/Jotto";
 
 const defaultProps = {
-  guessedWords: [{ guessedWord: "hufflepuff", letterMatchCount: 3 }],
 };
 /**
  * Factory function to create a ShallowWrapper for the App component.
