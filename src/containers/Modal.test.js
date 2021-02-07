@@ -1,9 +1,9 @@
 import { shallow } from "enzyme";
 import { findByTestAttr } from "../../test/testUtils.js";
-import Congrats from "./Modal.js";
+import Modal from "./Modal.js";
 
 const defaultProps = {
-  secretWord: "testing",
+  showModal: false,
 };
 /**
  * Factory function to create a ShallowWrapper for the App component.
@@ -13,25 +13,25 @@ const defaultProps = {
  */
 const setup = (props = {}) => {
   const setupProps = { ...props, ...defaultProps };
-  return shallow(<Congrats {...setupProps} />);
+  return shallow(<Modal {...setupProps} />);
 };
 
 test("renders without error", () => {
-  const wrapper = setup({ success: false });
-  const congratsComponent = findByTestAttr(wrapper, "congrats-component");
-  expect(congratsComponent.length).toBe(1);
+  const wrapper = setup({ showModal: false });
+  const modal = findByTestAttr(wrapper, "modal");
+  expect(modal.length).toBe(1);
 });
 
 test("renders no text when 'success' props is false", () => {
-  const wrapper = setup({ success: false });
-  const congratsComponent = findByTestAttr(wrapper, "congrats-component");
-  expect(congratsComponent.text()).toBe("");
+  const wrapper = setup({ showModal: false });
+  const modal = findByTestAttr(wrapper, "modal");
+  expect(modal.text()).toBe("");
 });
 
 test("renders text when 'success' props is true", () => {
-  const wrapper = setup({ success: true });
-  const congratsComponent = findByTestAttr(wrapper, "congrats-component");
-  expect(congratsComponent.text().length).not.toBe(0);
+  // const wrapper = setup({ showModal: true, children: <div>success!</div> });
+  // const modal = findByTestAttr(wrapper, "modal");
+  // expect(modal.text().length).not.toBe(0);
 });
 
 test("initializes with a word", () => {});

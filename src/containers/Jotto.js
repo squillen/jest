@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Modal from "./Modal";
 import Guesses from "./Guesses";
 import Button from "../components/Button";
+import { findCommonLetters } from "../helpers/helpers.utils.js";
 
 const errors = {
   1: "You can't guess numbers!",
@@ -51,10 +52,11 @@ export default function Jotto() {
       [guessToLowerCase]: guessToLowerCase,
     };
     setUserGuesses(newUserGuesses);
-    const newCommonLetters = guessToLowerCase.split("").reduce((obj, l) => {
-      if (secretWord.includes(l)) obj[l] = true;
-      return obj;
-    }, commonLetters);
+    const newCommonLetters = findCommonLetters(
+      guessToLowerCase,
+      secretWord,
+      commonLetters
+    );
     setCommonLetters(newCommonLetters);
   };
 

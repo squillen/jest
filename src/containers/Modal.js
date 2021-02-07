@@ -10,6 +10,6 @@ export default function Congrats({ children, showModal }) {
 }
 
 Congrats.propTypes = {
-  success: PropTypes.bool.isRequired,
-  secretWord: PropTypes.string.isRequired,
+  showModal: PropTypes.bool.isRequired,
+  children: PropTypes.node,
 }
