@@ -127,7 +127,7 @@
   font-size: 1.6rem;
   color: black;
   background-color: var(--color-grey-light-3);
-  width: 50rem;
+  width: 50%;
   height: 5rem;
   padding: 1rem;
   border-radius: 10px;
@@ -183,22 +183,27 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* min-height: 30vh; */
 }
 
 .guesses__letters {
   width: 90%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   position: relative;
 }
 
+.guesses__word {
+  display: flex;
+  justify-content: space-between;
+}
+
 .letter {
+  color: white;
   font-size: 4rem;
   margin: 0 0.8rem;
-  cursor: pointer;
   position: relative;
   display: block;
 }
@@ -215,14 +220,26 @@
   top: 55%;
 }
 
-.guessed {
-  transform: scale(0.8);
+.error {
+  font-size: 1.2rem;
+  margin-top: 4rem;
+  /* color:rgba(217, 47, 75, 1); */
 }
 
-.guessed:before {
-  background: rgb(255, 133, 133);
+.wrong {
+  transition: all 1s;
+}
+
+.match {
+  transition: all 1s;
+  transform: scale(1.1);
+  color: rgb(24, 185, 19);
+}
+
+.wrong:before {
+  background: rgb(233, 30, 30);
   width: 100%;
-  transition: width .5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 /* BUTTON */
