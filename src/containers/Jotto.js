@@ -1,23 +1,35 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import Congrats from "./Congrats";
+import Modal from "./Modal";
 import Guesses from "./Guesses";
+import Button from "../components/Button";
 
 const errors = {
   1: "You can't guess numbers!",
   2: "You've already guessed that word.",
 };
-
+const secretWords = ["camping", "jotto", "italy", "pizza", "football"];
 export default function Jotto() {
-  const secretWord = "camping";
+  const currentRoundWords = [...secretWords];
+  const [secretWord, setSecretWord] = useState(getRandomWord());
   const [currentGuess, setCurrentGuess] = useState("");
   const [userGuesses, setUserGuesses] = useState({});
+  const [commonLetters, setCommonLetters] = useState({});
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [commonLetters, setCommonLetters] = useState({});
 
   ///////// CLICK HANDLERS
-  const playAgain = () => {};
+  const playAgain = () => {
+    // get new word
+    const newWord = getRandomWord();
+    setSecretWord(newWord);
+
+    // reset state
+    setCurrentGuess("");
+    setCommonLetters({});
+    setSuccess(false);
+    setUserGuesses({});
+  };
 
   const handleCurrentGuess = () => {
     const guessToLowerCase = currentGuess.toLocaleLowerCase();
@@ -27,11 +39,11 @@ export default function Jotto() {
     const alreadyGuessed = userGuesses[guessToLowerCase];
     const currentError = isNumber ? 1 : alreadyGuessed ? 2 : false;
     if (currentError) return setError(currentError);
-    if (guessToLowerCase === secretWord) {
-      setSuccess(true);
-      setUserGuesses({});
-    }
-    // no errors, set guess
+
+    // check if won
+    if (guessToLowerCase === secretWord) setSuccess(true);
+
+    // no errors, didn't win, set guess
     setError(false);
     setCurrentGuess("");
     const newUserGuesses = {
@@ -45,6 +57,13 @@ export default function Jotto() {
     }, commonLetters);
     setCommonLetters(newCommonLetters);
   };
+
+  function getRandomWord() {
+    return currentRoundWords.splice(
+      Math.floor(Math.random() * currentRoundWords.length),
+      1
+    )[0];
+  }
 
   return (
     <main data-test="jotto-component" className="jotto-component">
@@ -83,11 +102,13 @@ export default function Jotto() {
           <Guesses secretWord={secretWord} guesses={Object.keys(userGuesses)} />
         </section>
       </section>
-      <Congrats
-        success={success}
-        secretWord={secretWord}
-        handleClick={playAgain}
-      />
+      <Modal showModal={success}>
+        <span className="modal__text">
+          By golly, you did it! The secret word was "
+          <span className="secretWord">{secretWord}</span>".
+        </span>
+        <Button label="Play Again" onClick={playAgain} />
+      </Modal>
     </main>
   );
 }

@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import { findByTestAttr } from "../../test/testUtils.js";
-import Congrats from "./Congrats.js";
+import Congrats from "./Modal.js";
 
 const defaultProps = {
   secretWord: "testing",
