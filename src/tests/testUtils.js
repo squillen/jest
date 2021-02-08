@@ -1,5 +1,6 @@
-import { createStore } from 'redux';
-import rootReducer from '../store/reducers/index'
+import { applyMiddleware, createStore } from "redux";
+import rootReducer from "../store/reducers/index";
+import { middlewares } from "../store/configureStore.js";
 
 /**
  * Create a testing store with imported reducers, middleware, and inital state.
@@ -9,8 +10,11 @@ import rootReducer from '../store/reducers/index'
  * @returns {Store} - Redux store
  */
 export const storeFactory = (initialState) => {
-  createStore(rootReducer, initialState)
-}
+  const createStoreWithMiddleware = applyMiddleware(...middlewares)(
+    createStore
+  );
+  createStoreWithMiddleware(rootReducer, initialState);
+};
 
 export const findByTestAttr = (wrapper, val) =>
   wrapper.find(`[data-test='${val}']`);

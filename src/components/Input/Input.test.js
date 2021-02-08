@@ -16,6 +16,12 @@ const setupButton = (initialState = {}) => {
 
 describe("render", () => {
   describe("word has not been guessed", () => {
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { }
+      wrapper = setupInput(initialState)
+
+    })
     test("renders component without error", () => {});
     test("renders input box", () => {});
     test("renders submit button", () => {});
