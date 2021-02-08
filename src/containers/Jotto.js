@@ -4,6 +4,8 @@ import Modal from "../components/Modal";
 import Guesses from "./Guesses";
 import Button from "../components/Button";
 import { findCommonLetters } from "../helpers/helpers.utils.js";
+import Input from "../components/Input/Input";
+import SVGButton from "../components/SVGButton";
 
 const errors = {
   1: "You can't guess numbers!",
@@ -76,19 +78,16 @@ export default function Jotto() {
         </div>
       </header>
       <section className="game">
-        <section action="#" className="input-section">
-          <input
-            onChange={(e) => setCurrentGuess(e.target.value)}
-            className="input-section__input"
-            type="text"
+        <section className="input-section">
+          <Input
             value={currentGuess}
+            onChange={setCurrentGuess}
             placeholder="your guess"
           />
-          <button onClick={handleCurrentGuess} className="input-section__btn">
-            <svg className="input-section__icon">
-              <use xlinkHref="img/sprite.svg#icon-magnifying-glass" />
-            </svg>
-          </button>
+          <SVGButton
+            onClick={handleCurrentGuess}
+            path="icon-magnifying-glass"
+          />
         </section>
         <section className="results">
           <section className="results__word">
